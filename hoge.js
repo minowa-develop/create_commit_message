@@ -25,15 +25,16 @@ function addOption(value,index) {
   var option = document.createElement("option");
   option.text = value;
   option.value = value;
-  var selected  = false;
-  if(index == 0) selected = true;
-  option.selected = selected;
+  option.selected = false;
+  if(index == 0){
+    option.selected = true;
+  }
   var select = document.getElementById("type");
   select.appendChild(option);
 }
 function clearTypeList(optionId) {
   select_childs = document.getElementById(optionId);
-  while(0<select_childs.length){
+  while(0 < select_childs.length){
     select_childs.remove(0);
   }
 }
