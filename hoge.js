@@ -95,13 +95,16 @@ function getObj(){
 
 // export
 function exportData(){
-  const blob = new Blob([ JSON.stringify(getObj())],{type:"text/plain"});
+  var obj = getObj();
+  const blob = new Blob([ JSON.stringify(obj)],{type:"text/plain"});
   const link = document.createElement('a');
   link.href = URL.createObjectURL(blob);
-  link.download = 'export.txt';
+  link.download = makeExportFileName(obj);
   link.click();
 }
-
+function makeExportFileName(obj){
+  return obj.refs +'_'+ obj.subject +'.txt';
+}
 
 // import
 function importData() {
